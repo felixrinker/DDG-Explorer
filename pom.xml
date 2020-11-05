@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>laser.ddg</groupId>
+    <artifactId>ddg-explorer</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>DDG-Explorer</name>
+
+    <properties>
+        <!-- base settings -->
+        <gpg.useagent>true</gpg.useagent>
+        <jdk.version>1.8</jdk.version>
+        <mvn.version>3</mvn.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- maven plugins -->
+        <mvn.buildhelper.plugin.version>1.9.1</mvn.buildhelper.plugin.version>
+        <mvn.compiler.plugin.version>3.2</mvn.compiler.plugin.version>
+        <mvn.clean.plugin.version>2.6.1</mvn.clean.plugin.version>
+
+        <!-- dependency versions -->
+        <junit.version>4.12</junit.version>
+        <slf4j.version>1.7.25</slf4j.version>
+
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>freehep-maven2</id>
+            <url>http://java.freehep.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>maven-xwiki</id>
+            <url>https://maven.xwiki.org/externals/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.prefuse/prefuse -->
+        <dependency>
+            <groupId>org.prefuse</groupId>
+            <artifactId>prefuse</artifactId>
+            <version>beta-20071021</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.java-diff-utils</groupId>
+            <artifactId>java-diff-utils</artifactId>
+            <version>4.9</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.qarks/jdiff -->
+        <dependency>
+            <groupId>com.qarks</groupId>
+            <artifactId>jdiff</artifactId>
+            <version>1.4.2-xwiki</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.freehep/freehep-graphicsbase -->
+        <dependency>
+            <groupId>org.freehep</groupId>
+            <artifactId>freehep-graphicsbase</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>laser.ddg.gui.DDGExplorer</mainClass>
+                            </manifest>
+                        </archive>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${mvn.clean.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${mvn.buildhelper.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${mvn.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <fork>true</fork>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                    <compilerArgs>
+                        <arg>-Xlint</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

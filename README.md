@@ -1,5 +1,10 @@
 # DDG-Explorer
 
+**Maven based version of the DDG Explorer project**
+
+*Notes*
++ fixed double parsing localization bug [Issue #137](https://github.com/End-to-end-provenance/DDG-Explorer/issues/137)
+
 DDG Explorer is a tool that allows the user to view and query Data Derivation Graphs (DDGs). It has the following functionality:
 * Ability to [visualize the provenance](#visualize), with the ability to expand and contract portions of the graph to selectively show or hide details.
 * Ability to [view the data or R functions](#viewdata) referenced in the provenance
@@ -83,11 +88,12 @@ or if the input data files have changed.  If you modify the script, it will prob
 provenance graphs using the Compare DDGs command in the File menu.
 
 
-## Build Instructions on Ubuntu (> 16.04)
+## Build Instructions on Ubuntu (> 16.04) and MacOS
 
-1. Install 'ant' : `sudo apt-get install ant`
-2. Install 'javac' : `sudo apt-get install default-jdk`
-3. Clone the project: `git clone https://github.com/End-to-end-provenance/DDG-Explorer.git`
-4. Build the src files present in the /src/ directory : `ant build-project`
-5. Create the executable jar file : `ant ddg-explorer`
-6. The working directory should now contain the jar : `ddg-explorer_{version}.jar`
+1. Install 'maven' : `sudo apt-get install maven` / `brew install maven` 
+2. Install 'javac' : `sudo apt-get install default-jdk` / `brew cask install adoptopenjdk`
+3. Clone the project: `git clone https://github.com/felixrinker/DDG-Explorer`
+4. Build the project : `maven clean install`
+5. Create the executable jar file : `maven clean install assembly:single`
+6. The target directory should now contain the jar : `ddg-explorer_{version}-jar-with-dependencies.jar`
+7. Run the DDG-Explorer: `java -jar ddg-explorer_{version}-jar-with-dependencies.jar`

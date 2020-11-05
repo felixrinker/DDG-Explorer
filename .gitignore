@@ -1,3 +1,6 @@
+# Maven files
+target/
+
 /bin/
 /.classpath
 /.project
@@ -13,10 +16,16 @@ lib/nblibraries.properties
 nbbuild.xml
 ddg-explorer*.jar
 /dist/
-<<<<<<< HEAD
-=======
-/.DS_Store
-/eclispe-build.xml
->>>>>>> refs/heads/MissingScript
 /export.jardesc
 /manifest
+
+# Eclipse project files
+.project
+.classpath
+.settings
+
+# IntelliJ IDEA files
+*.iml
+*.ipr
+*.iws
+*.idea
