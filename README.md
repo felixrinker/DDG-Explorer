@@ -93,7 +93,7 @@ provenance graphs using the Compare DDGs command in the File menu.
 1. Install 'maven' : `sudo apt-get install maven` / `brew install maven` 
 2. Install 'javac' : `sudo apt-get install default-jdk` / `brew cask install adoptopenjdk`
 3. Clone the project: `git clone https://github.com/felixrinker/DDG-Explorer`
-4. Build the project : `maven clean install`
-5. Create the executable jar file : `maven clean install assembly:single`
-6. The target directory should now contain the jar : `ddg-explorer_{version}-jar-with-dependencies.jar`
-7. Run the DDG-Explorer: `java -jar ddg-explorer_{version}-jar-with-dependencies.jar`
+4. Build the project : `mvn clean install`
+5. Create the executable jar file : `mvn clean install assembly:single`
+6. The `./target` directory should now contain the jar : `ddg-explorer_{version}-jar-with-dependencies.jar`
+7. Run the DDG-Explorer from the `./target` directory: `java -jar ddg-explorer_{version}-jar-with-dependencies.jar`
